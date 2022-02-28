@@ -1,0 +1,5 @@
+web: bundle exec rails server
+worker: bundle exec sidekiq
+vite: bundle exec vite dev
+vite: bin/vite dev
+web: bin/rails s

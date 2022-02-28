@@ -1,0 +1,26 @@
+{
+  "dependencies": {
+    "@hotwired/turbo-rails": "^7.1.1",
+    "@js-from-routes/client": "^1.0.2",
+    "@popperjs/core": "^2.11.2",
+    "@rails/actiontext": "^7.0.2-2",
+    "bootstrap": "^5.1.3",
+    "data-confirm-modal": "^1.6.2",
+    "expose-loader": "^3.1.0",
+    "font-awesome": "^4.7.0",
+    "jquery": "^3.6.0",
+    "local-time": "^2.1.0",
+    "popper.js": "^1.16.1",
+    "sass": "^1.49.9",
+    "stimulus": "^3.0.1",
+    "stimulus-vite-helpers": "^3.0.0",
+    "trix": "^2.0.0-alpha.1",
+    "typescript": "^4.5.5",
+    "vite-plugin-full-reload": "^1.0.0",
+    "vite-plugin-stimulus-hmr": "^3.0.0"
+  },
+  "devDependencies": {
+    "vite": "^2.7.7",
+    "vite-plugin-ruby": "^3.0.5"
+  }
+}
