@@ -1,5 +1,9 @@
 uk:
+  common:
+    details: 'Деталі'
+    ago: 'тому'
   requests:
+    create_new: 'Створити новий запит'
     created: 'Запит був успішно створений'
   activerecord:
     attributes:
@@ -10,5 +14,8 @@ uk:
         contact_name: Ім'я для контакту
         phone: Телефон
         description: Опис
+        created_at: Створено
     models:
-      request: Запит про допомогу
+      request:
+        one: Запит про допомогу
+        few: Запити про допомогу
