@@ -3,17 +3,7 @@
 // $navbar-default-color: $light-orange;
 
 @import "font-awesome";
-@import "bootstrap";
 @import "./sticky-footer";
-@import "./announcements";
-
-// Fixes bootstrap nav-brand container overlap
-@include media-breakpoint-down(xs) {
-  .container {
-    margin-left: 0;
-    margin-right: 0;
-  }
-}
 
 // Masquerade alert shouldn't have a bottom margin
 body > .alert {

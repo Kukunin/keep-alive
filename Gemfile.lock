@@ -1,11 +1,4 @@
 GIT
-  remote: https://github.com/excid3/devise-bootstrapped.git
-  revision: a963d93052ce0069d050e4615fb06e95dc30ac2b
-  branch: bootstrap4
-  specs:
-    devise-bootstrapped (0.2.0)
-
-GIT
   remote: https://github.com/excid3/madmin.git
   revision: 8f29bfd1e3d7dc1149c86c86e18dd6e8e684a87f
   specs:
@@ -87,16 +80,10 @@ GEM
     addressable (2.8.0)
       public_suffix (>= 2.0.2, < 5.0)
     ast (2.4.2)
-    autoprefixer-rails (10.4.2.0)
-      execjs (~> 2)
     bcrypt (3.1.16)
     bindex (0.8.1)
     bootsnap (1.10.3)
       msgpack (~> 1.2)
-    bootstrap (4.6.1)
-      autoprefixer-rails (>= 9.1.0)
-      popper_js (>= 1.14.3, < 2)
-      sassc-rails (>= 2.0.0)
     builder (3.2.4)
     capybara (3.36.0)
       addressable
@@ -130,7 +117,6 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     dry-cli (0.7.0)
     erubi (1.10.0)
-    execjs (2.8.1)
     faker (2.19.0)
       i18n (>= 1.6, < 2)
     faraday (2.2.0)
@@ -247,7 +233,6 @@ GEM
     parser (3.1.1.0)
       ast (~> 2.4.1)
     pg (1.3.3)
-    popper_js (1.16.0)
     public_suffix (4.0.6)
     puma (5.6.2)
       nio4r (~> 2.0)
@@ -324,14 +309,6 @@ GEM
       ffi (~> 1.12)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
-    sassc (2.4.0)
-      ffi (~> 1.9)
-    sassc-rails (2.1.2)
-      railties (>= 4.0.0)
-      sassc (>= 2.0)
-      sprockets (> 3.0)
-      sprockets-rails
-      tilt
     selenium-webdriver (4.1.0)
       childprocess (>= 0.5, < 5.0)
       rexml (~> 3.2, >= 3.2.5)
@@ -353,7 +330,6 @@ GEM
       railties (>= 6.0.0)
     strscan (3.0.1)
     thor (1.2.1)
-    tilt (2.0.10)
     timeout (0.2.0)
     turbo-rails (7.1.1)
       rails (>= 6.0.0)
@@ -396,11 +372,9 @@ PLATFORMS
 DEPENDENCIES
   activerecord-postgres_enum
   bootsnap
-  bootstrap (~> 4.5)
   capybara
   debug
   devise (~> 4.7, >= 4.7.1)
-  devise-bootstrapped!
   devise_masquerade (~> 1.2)
   friendly_id (~> 5.3)
   hotwire-rails

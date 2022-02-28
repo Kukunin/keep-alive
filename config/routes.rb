@@ -1,6 +1,8 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
+  resources :requests
+
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
   authenticate :user, ->(u) { u.admin? } do
@@ -10,7 +12,7 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index], export: true
   resources :announcements, only: [:index], export: true
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  root to: 'home#index'
+  root to: redirect('/requests')
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

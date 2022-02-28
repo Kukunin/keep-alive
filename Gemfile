@@ -77,9 +77,7 @@ group :test do
   gem 'webdrivers'
 end
 gem 'activerecord-postgres_enum'
-gem 'bootstrap', '~> 4.5'
 gem 'devise', '~> 4.7', '>= 4.7.1'
-gem 'devise-bootstrapped', github: 'excid3/devise-bootstrapped', branch: 'bootstrap4'
 gem 'devise_masquerade', '~> 1.2'
 gem 'friendly_id', '~> 5.3'
 gem 'hotwire-rails'
