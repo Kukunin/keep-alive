@@ -10,9 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_02_28_014618) do
+ActiveRecord::Schema[7.0].define(version: 2022_02_28_020154) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_enum :request_status, [
+    "new",
+    "active",
+    "done",
+  ], force: :cascade
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -72,6 +78,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_02_28_014618) do
     t.datetime "updated_at", null: false
     t.index ["read_at"], name: "index_notifications_on_read_at"
     t.index ["recipient_type", "recipient_id"], name: "index_notifications_on_recipient"
+  end
+
+  create_table "requests", force: :cascade do |t|
+    t.string "region", null: false
+    t.string "city", null: false
+    t.string "address"
+    t.string "contact_name"
+    t.text "description"
+    t.string "phone"
+    t.string "viber"
+    t.string "telegram"
+    t.string "skype"
+    t.string "reporter_ip", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["created_at"], name: "index_requests_on_created_at"
+    t.index ["updated_at"], name: "index_requests_on_updated_at"
   end
 
   create_table "services", force: :cascade do |t|

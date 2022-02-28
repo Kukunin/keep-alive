@@ -90,3 +90,4 @@ gem "whenever", require: false
 gem "hotwire-rails"
 gem "vite_rails"
 gem "js_from_routes", group: :development
+gem 'activerecord-postgres_enum'
