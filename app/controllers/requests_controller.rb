@@ -71,7 +71,7 @@ class RequestsController < ApplicationController
   def request_params
     params
       .require(:request)
-      .permit(:region, :city, :address, :contact_name, :phone, :viber,
+      .permit(:title, :region, :city, :address, :contact_name, :phone, :viber,
               :telegram, :description, :skype)
       .merge(reporter_ip: request.remote_ip)
   end

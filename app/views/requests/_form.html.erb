@@ -13,6 +13,14 @@
 
   <div class="grid grid-cols-1 gap-6">
     <div>
+      <%= f.label :title, class: 'text-gray-700' %>
+      <%= f.text_field :title, required: true, maxlength: 100, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+    <div>
+      <%= f.label :description, class: 'text-gray-700' %>
+      <%= f.text_area :description, rows: 5, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+    <div>
       <%= f.label :region, class: 'text-gray-700' %>
       <%= f.select :region, options_for_select(Region.regions), {}, required: true, class: 'block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
     </div>
@@ -31,10 +39,6 @@
     <div>
       <%= f.label :phone, class: 'text-gray-700' %>
       <%= f.text_field :phone, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
-    </div>
-    <div>
-      <%= f.label :description, class: 'text-gray-700' %>
-      <%= f.text_area :description, rows: 5, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
     </div>
     <div>
       <%= f.label :viber, class: 'text-gray-700' %>

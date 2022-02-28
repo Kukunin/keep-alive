@@ -10,6 +10,7 @@ uk:
       request:
         region: Область
         city: Місто
+        title: Заголовок
         address: Адреса
         contact_name: Ім'я для контакту
         phone: Телефон
