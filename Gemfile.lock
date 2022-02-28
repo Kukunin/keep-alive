@@ -392,6 +392,7 @@ DEPENDENCIES
   omniauth-facebook (~> 6.0)
   omniauth-github (~> 1.4)
   omniauth-twitter (~> 1.4)
+  pagy
   pg (~> 1.1)
   puma (~> 5.0)
   pundit (~> 2.1)

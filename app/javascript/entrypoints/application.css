@@ -1,3 +1,6 @@
+@import "font-awesome";
+@import "../stylesheets/pagy";
+
 @tailwind base;
 
 @layer base {

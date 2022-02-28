@@ -1,4 +1,6 @@
 module ApplicationHelper
+  include Pagy::Frontend
+
   def avatar_path(object, options = {})
     size = options[:size] || 180
     default_image = options[:default] || 'mp'

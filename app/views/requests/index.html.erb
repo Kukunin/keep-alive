@@ -52,6 +52,16 @@
             <% end %>
           </tbody>
         </table>
+        <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
+          <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
+            <div class="text-sm text-gray-700">
+              <%== pagy_info(@pagy) %>
+            </div>
+            <div>
+              <%== pagy_nav(@pagy) %>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   </div>
