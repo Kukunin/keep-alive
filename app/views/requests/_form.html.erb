@@ -1,0 +1,68 @@
+<%= form_with(model: request, local: true) do |f| %>
+  <% if request.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(request.errors.count, "error") %> prohibited this request from being saved:</h2>
+
+      <ul>
+        <% request.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="grid grid-cols-1 gap-6">
+    <div>
+      <%= f.label :region, class: 'text-gray-700' %>
+      <%= f.select :region, options_for_select(Region.regions), {}, required: true, class: 'block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+    <div>
+      <%= f.label :city, class: 'text-gray-700' %>
+      <%= f.text_field :city, required: true, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+    <div>
+      <%= f.label :address, class: 'text-gray-700' %>
+      <%= f.text_field :address, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+    <div>
+      <%= f.label :contact_name, class: 'text-gray-700' %>
+      <%= f.text_field :contact_name, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+    <div>
+      <%= f.label :phone, class: 'text-gray-700' %>
+      <%= f.text_field :phone, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+    <div>
+      <%= f.label :description, class: 'text-gray-700' %>
+      <%= f.text_area :description, rows: 5, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+    <div>
+      <%= f.label :viber, class: 'text-gray-700' %>
+      <%= f.check_box :viber, value: 'yes', class: 'focus:ring-indigo-200 h-4 w-4 text-indigo-600 border-indigo-300 rounded ml-2' %>
+    </div>
+    <div>
+      <%= f.label :telegram, class: 'text-gray-700' %>
+      <%= f.text_field :telegram, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+    <div>
+      <%= f.label :skype, class: 'text-gray-700' %>
+      <%= f.text_field :skype, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+
+    <div>
+      <% if request.persisted? %>
+        <div class="float-right">
+          <%= link_to 'Destroy', request, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+        </div>
+      <% end %>
+
+      <%= f.submit class: 'inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
+
+      <% if request.persisted? %>
+        <%= link_to "Повернутись", request, class: "inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      <% else %>
+        <%= link_to "Повернутись", requests_path, class: "inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>

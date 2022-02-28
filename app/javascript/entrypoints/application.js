@@ -4,7 +4,6 @@
 // that code so it'll be compiled.
 console.log('Vite ⚡️ Ruby')
 import '~/stylesheets/application.scss'
-import '~/globals.js'
 import '~/setup.js'
 
 // Example: Using JS From Routes

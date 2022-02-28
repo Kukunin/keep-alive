@@ -1,0 +1,12 @@
+uk:
+  activerecord:
+    attributes:
+      request:
+        region: Область
+        city: Місто
+        address: Адреса
+        contact_name: Ім'я для контакту
+        phone: Телефон
+        description: Опис
+    models:
+      request: Запит про допомогу
