@@ -1,0 +1,105 @@
+require:
+  - rubocop-faker
+  - rubocop-performance
+  - rubocop-rspec
+  - rubocop-rails
+
+AllCops:
+  TargetRubyVersion: 3.0
+  NewCops: enable
+  Exclude:
+    - vendor/**/*
+    - db/**/*
+    - bin/**/*
+    - tmp/**/*
+    - node_modules/**/*
+
+Layout/LineLength:
+  Max: 100
+
+Metrics/ClassLength:
+  Max: 150
+
+Metrics/MethodLength:
+  Max: 20
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/BlockLength:
+  IgnoredMethods:
+    - describe
+    - context
+    - shared_examples_for
+    - class_methods
+    - configure
+    - setup
+    - it_behaves_like
+    - shared_context
+    - draw
+  Exclude:
+    - app/admin/**/*
+    - app/api/**/*
+    - spec/factories/**/*
+
+RSpec/DescribeMethod:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Exclude:
+    - 'spec/features/**/*_spec.rb'
+    - 'spec/requests/**/*_spec.rb'
+    - 'spec/**/*_integration_spec.rb'
+    - 'spec/integrations/**/*_spec.rb'
+
+Rails/OutputSafety:
+  Exclude:
+    - app/admin/**/*
+
+# We care about validations ourselves and don't want to avoid
+# fast SQL queries for sanity of performance
+Rails/SkipsModelValidations:
+  Enabled: false
+
+# By semantic, we don't always want to define associations in both ways
+# A single directional associations are perfectly valid cases
+Rails/InverseOf:
+  Enabled: false
+
+# We don't always want to include whole Rails in our Rake tasks
+Rails/RakeEnvironment:
+  Enabled: false
+
+# Until https://github.com/rubocop-hq/rubocop-rspec/issues/879 is fixed
+RSpec/RepeatedDescription:
+  Enabled: false
+
+Rails/HasAndBelongsToMany:
+  Enabled: false
+
+# It's sometimes useful, especially for the performance standpoint
+RSpec/MultipleExpectations:
+  Enabled: false
+
+# it's too much
+RSpec/MultipleMemoizedHelpers:
+  Enabled: false
+
+Naming/MethodParameterName:
+  AllowedNames:
+    - ad
+    - id
+
+# sometimes we move tests to a folder
+RSpec/FilePath:
+  SpecSuffixOnly: true
+
+# Explicitness is better than implicitness
+Style/RedundantArgument:
+  Enabled: false
+
+Naming/InclusiveLanguage:
+  Enabled: false
