@@ -3,6 +3,8 @@ uk:
   common:
     details: 'Деталі'
     ago: 'тому'
+    region: 'область'
+    contacts: 'Контактні дані'
   requests:
     create_new: 'Створити новий запит'
     created: 'Запит був успішно створений'
