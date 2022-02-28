@@ -7,21 +7,28 @@
 <div class="flex flex-col">
   <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
     <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+      <div class="mb-4">
+      <%= search_form_for @q do |f| %>
+        <%= f.label :region_eq, "#{Request.human_attribute_name("region")}:", class: 'text-gray-700 mr-2' %>
+        <%= f.select :region_eq, options_for_select(Region.regions, @q.region_eq), { include_blank: true }, class: 'w-30 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 py-1 mr-2'  %>
+        <%= f.submit class: 'inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500' %>
+      <% end %>
+      </div>
       <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                <%= Request.human_attribute_name("region") %>
+                <%= sort_link(@q, :region) %>
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                <%= Request.human_attribute_name("city") %>
+                <%= sort_link(@q, :city) %>
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                <%= Request.human_attribute_name("address") %>
+                <%= sort_link(@q, :address) %>
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                <%= Request.human_attribute_name("created_at") %>
+                <%= sort_link(@q, :created_at) %>
               </th>
               <th scope="col" class="relative px-6 py-3">
                 <span class="sr-only"><%= t('common.details') %></span>
@@ -30,7 +37,7 @@
           </thead>
           <tbody>
             <% @requests.each_with_index do |request, i| %>
-              <%= content_tag :tr, id: dom_id(request), class: "#{dom_class(request)} #{(i % 2).zero? ? 'bg-white' : 'bg-gray-50'}" do %>
+              <%= content_tag :tr, id: dom_id(request), class: "hover:bg-gray-100 #{dom_class(request)} #{(i % 2).zero? ? 'bg-white' : 'bg-gray-50'}" do %>
                 <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   <%= request.region %>
                 </td>
