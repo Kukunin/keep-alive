@@ -1,4 +1,6 @@
 uk:
+  requests:
+    created: 'Запит був успішно створений'
   activerecord:
     attributes:
       request:

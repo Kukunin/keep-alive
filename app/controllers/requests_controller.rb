@@ -19,12 +19,12 @@ class RequestsController < ApplicationController
 
   # POST /requests or /requests.json
   def create
-    @request = Request.new(request_params.merge(reporter_ip: request.remote_ip))
+    @request = Request.new(request_params)
 
     respond_to do |format|
       if @request.save
         format.html do
-          redirect_to request_url(@request), notice: 'Request was successfully created.'
+          redirect_to request_url(@request), notice: t('requests.created')
         end
         format.json { render :show, status: :created, location: @request }
       else
@@ -68,7 +68,10 @@ class RequestsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def request_params
-    params.require(:request).permit(:region, :city, :address, :contact_name, :phone, :viber,
-                                    :telegram, :description, :skype)
+    params
+      .require(:request)
+      .permit(:region, :city, :address, :contact_name, :phone, :viber,
+              :telegram, :description, :skype)
+      .merge(reporter_ip: request.remote_ip)
   end
 end

@@ -1,7 +1,7 @@
 require 'sidekiq/web'
 
 Rails.application.routes.draw do
-  resources :requests
+  resources :requests, except: %i[edit update]
 
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
