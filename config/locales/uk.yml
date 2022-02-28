@@ -1,5 +1,6 @@
 uk:
-  title: 'Координація допомоги мирним людям в Україні'
+  title: 'Координація допомоги мирним людям в Україні - Допоможи вижити'
+  short_title: 'Допоможи вижити'
   common:
     details: 'Деталі'
     ago: 'тому'
@@ -18,8 +19,14 @@ uk:
         contact_name: Ім'я для контакту
         phone: Телефон
         description: Опис
+        reporter_ip: IP адреса
+        updated_at: Оновлено
         created_at: Створено
     models:
       request:
         one: Запит про допомогу
         few: Запити про допомогу
+        other: 'запитів про допомогу'
+  admin:
+    titles:
+      index: 'Список %{pluralized_model_name}'
