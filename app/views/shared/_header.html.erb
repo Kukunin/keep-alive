@@ -7,7 +7,8 @@
           <img class="h-10 w-auto" src="/nahui.png" alt="">
         </a>
         <div class="ml-10 space-x-8">
-          <a href="/requests" class="text-base font-medium text-white hover:text-indigo-50"> <%= t('nav.requests') %> </a>
+          <%= link_to t('nav.ask_requests'), asks_requests_path(), class: 'text-base font-medium text-white hover:text-indigo-50' %>
+          <%= link_to t('nav.provide_requests'), provides_requests_path(), class: 'text-base font-medium text-white hover:text-indigo-50' %>
 
           <a href="/about" class="text-base font-medium text-white hover:text-indigo-50"> <%= t('nav.about') %> </a>
         </div>

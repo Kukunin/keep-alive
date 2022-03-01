@@ -5,9 +5,17 @@ Trestle.resource(:requests) do
 
   search_form do |q|
     select(
+      :type_eq,
+      options_for_select(
+        Request.types.index_by { |type| Request.human_type(type) },
+        q.type_eq
+      ),
+      { include_blank: true }
+    )
+    select(
       :status_eq,
       options_for_select(
-        %i[new active done].index_by { |status| Request.human_status(status) },
+        Request.statuses.index_by { |status| Request.human_status(status) },
         q.status_eq
       ),
       { include_blank: true }
@@ -17,9 +25,10 @@ Trestle.resource(:requests) do
 
   # Customize the table columns shown on the index view.
   table do
+    column :status, ->(request) { request.human_status }
+    column :type, ->(request) { request.human_type }
     column :region
     column :city
-    column :status, ->(request) { request.human_status }
     column :title
     column :comments_count
     column :contact_name
@@ -31,9 +40,15 @@ Trestle.resource(:requests) do
   # Customize the form fields shown on the new/edit views.
   form do |request|
     tab :request do
+      select :type,
+             options_for_select(
+               Request.types.index_by { |type| Request.human_type(type) },
+               request.type
+             ),
+             { include_blank: false }
       select :status,
              options_for_select(
-               %i[new active done].index_by { |status| Request.human_status(status) },
+               Request.statuses.index_by { |status| Request.human_status(status) },
                request.status
              ),
              { include_blank: false }

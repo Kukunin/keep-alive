@@ -3,8 +3,9 @@ class RequestsController < ApplicationController
 
   # GET /requests or /requests.json
   def index
+    @type = params[:type]
     @q = Request.ransack(params[:q])
-    @pagy, @requests = pagy(@q.result.order(created_at: :desc))
+    @pagy, @requests = pagy(@q.result.where(type: @type).order(created_at: :desc))
   end
 
   # GET /requests/1 or /requests/1.json
@@ -12,6 +13,7 @@ class RequestsController < ApplicationController
 
   # GET /requests/new
   def new
+    @type = params[:type]
     @request = Request.new
   end
 
@@ -26,6 +28,7 @@ class RequestsController < ApplicationController
   # POST /requests or /requests.json
   def create
     @request = Request.new(request_params)
+    @type = @request.type
 
     respond_to do |format|
       if @request.save
@@ -76,7 +79,7 @@ class RequestsController < ApplicationController
   def request_params
     params
       .require(:request)
-      .permit(:title, :region, :city, :address, :contact_name, :phone, :viber,
+      .permit(:type, :title, :region, :city, :address, :contact_name, :phone, :viber,
               :telegram, :description, :skype)
       .merge(reporter_ip: request.remote_ip)
   end
