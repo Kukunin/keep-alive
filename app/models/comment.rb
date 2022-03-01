@@ -1,5 +1,5 @@
 class Comment < ApplicationRecord
-  belongs_to :request
+  belongs_to :request, counter_cache: true
   broadcasts_to :request
 
   validates :username, presence: true, length: { maximum: 100 }

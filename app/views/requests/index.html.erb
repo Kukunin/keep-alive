@@ -28,6 +28,9 @@
                 <%= sort_link(@q, :title) %>
               </th>
               <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                <%= sort_link(@q, :comments_count) %>
+              </th>
+              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 <%= sort_link(@q, :created_at) %>
               </th>
               <th scope="col" class="relative px-6 py-3">
@@ -46,6 +49,9 @@
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <%= request.title %>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                  <%= request.comments_count %>
                 </td>
                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <time datetime="<%= request.created_at.iso8601 %>">

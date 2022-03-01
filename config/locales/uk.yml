@@ -26,6 +26,7 @@ uk:
         phone: Телефон
         description: Опис
         reporter_ip: IP адреса
+        comments_count: Відгуків
         updated_at: Оновлено
         created_at: Створено
       comment:
