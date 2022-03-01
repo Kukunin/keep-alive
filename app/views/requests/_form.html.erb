@@ -1,6 +1,7 @@
 <%= form_with(model: request, local: true) do |f| %>
   <%= render partial: 'shared/form_errors', locals: { record: request } %>
 
+  <%= f.hidden_field :type, value: type %>
   <div class="grid grid-cols-1 gap-6">
     <div>
       <%= f.label :title, class: 'text-gray-700' %>
@@ -50,13 +51,9 @@
         </div>
       <% end %>
 
-      <%= f.submit class: 'inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50' %>
+      <%= f.submit t('requests.create_new'), class: 'inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50' %>
 
-      <% if request.persisted? %>
-        <%= link_to "Повернутись", request, class: "inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-      <% else %>
-        <%= link_to "Повернутись", requests_path, class: "inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
-      <% end %>
+      <%= link_to "Повернутись", send("#{type.pluralize}_requests_path"), class: "inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
     </div>
   </div>
 <% end %>

@@ -1,6 +1,6 @@
 <div id="<%= dom_id request %>">
   <div class="bg-white shadow overflow-hidden sm:rounded-lg">
-    <div class="px-4 py-5 sm:px-6 flex items-center text-gray-400">
+    <div class="px-4 pt-5 sm:px-6 flex items-center text-gray-400">
       <a href="/" class="text-gray-400 hover:text-gray-500" target="_top">
         <!-- Heroicon name: solid/home -->
         <svg class="flex-shrink-0 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
@@ -14,10 +14,13 @@
         <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
       </svg>
 
-      <h3 class="text-lg leading-6 font-medium text-gray-600">
-        <%= Request.model_name.human %>
-      </h3>
+      <a href="<%= send("#{request.type.pluralize}_requests_path") %>" class="text-sm leading-6 font-medium text-gray-600 hover:text-gray-800" target="_top">
+        <%= t("requests.#{request.type}.list") %>
+      </a>
     </div>
+    <h3 class="px-4 pt-1 pb-5 sm:px-6 text-lg leading-6 font-medium text-gray-800">
+      <%= t("requests.#{request.type}.item") %>
+    </h3>
     <div class="border-t border-gray-200 px-4 py-5 sm:px-6">
       <dl class="grid grid-cols-1 gap-x-2 gap-y-8 sm:grid-cols-2">
         <div class="sm:col-span-1">

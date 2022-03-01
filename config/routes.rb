@@ -3,8 +3,13 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
-  resources :requests, except: %i[edit update destroy] do
+  resources :requests, except: %i[index new edit update destroy] do
     post :contacts, on: :member
+    %w[ask provide].each do |type|
+      get type.pluralize, on: :collection, action: 'index', type: type
+      get "#{type.pluralize}/new", on: :collection, action: 'new', type: type
+    end
+
     resources :comments, only: %i[index show new create]
   end
 
@@ -18,5 +23,5 @@ Rails.application.routes.draw do
   resources :notifications, only: [:index], export: true
   resources :announcements, only: [:index], export: true
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
-  root to: redirect('/requests')
+  root to: redirect('/requests/asks')
 end
