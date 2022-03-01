@@ -11,6 +11,7 @@ Trestle.resource(:requests) do
   table do
     column :region
     column :city
+    column :status, ->(request) { request.human_status }
     column :title
     column :comments_count
     column :contact_name
@@ -22,8 +23,15 @@ Trestle.resource(:requests) do
   # Customize the form fields shown on the new/edit views.
   form do |request|
     tab :request do
-      select :status, options_for_select(%i[new active done]), { include_blank: false }
-      select :region, options_for_select(Region.regions), { include_blank: true }
+      select :status,
+             options_for_select(
+               %i[new active done].index_by { |status| Request.human_status(status) },
+               request.status
+             ),
+             { include_blank: false }
+      select :region,
+             options_for_select(Region.regions, request.region),
+             { include_blank: true }
       text_field :city
       text_field :address
       text_field :title

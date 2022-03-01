@@ -40,7 +40,7 @@ uk:
         created_at: Створено
         status: Статус
         status_enum:
-          new: Нова
+          new: Новий
           active: Обробляється
           done: Завершено
       comment:

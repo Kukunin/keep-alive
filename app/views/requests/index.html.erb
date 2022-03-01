@@ -58,7 +58,7 @@
               ) do %>
                 <% if @q.region_eq.blank? %>
                 <td class="px-2 lg:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
-                  <%= t(request.status, scope: 'activerecord.attributes.request.status_enum') %>
+                  <%= request.human_status %>
                 </td>
                 <td class="px-2 lg:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   <%= request.region %>

@@ -17,6 +17,18 @@ class Request < ApplicationRecord
   validates :phone, presence: true, if: -> { viber && %w[f 0].exclude?(viber) }
   validate :at_least_one_contact_is_there
 
+  def self.statuses
+    %i[new active done]
+  end
+
+  def human_status
+    self.class.human_status(status)
+  end
+
+  def self.human_status(status)
+    I18n.t(status, scope: 'activerecord.attributes.request.status_enum')
+  end
+
   private
 
   CONTACT_FIELDS = %i[address phone telegram skype].freeze
