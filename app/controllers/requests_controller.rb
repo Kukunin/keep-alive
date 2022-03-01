@@ -4,7 +4,7 @@ class RequestsController < ApplicationController
   # GET /requests or /requests.json
   def index
     @q = Request.ransack(params[:q])
-    @pagy, @requests = pagy(@q.result)
+    @pagy, @requests = pagy(@q.result.order(created_at: :desc))
   end
 
   # GET /requests/1 or /requests/1.json
