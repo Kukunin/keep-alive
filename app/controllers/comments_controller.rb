@@ -23,6 +23,6 @@ class CommentsController < ApplicationController
     params
       .require(:comment)
       .permit(:username, :message)
-      .merge(ip_address: request.remote_ip)
+      .merge(ip_address: request.remote_ip, user: current_user)
   end
 end

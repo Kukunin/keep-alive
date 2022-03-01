@@ -24,6 +24,7 @@ uk:
   comments:
     no_records: 'Немає жодного коментаря'
     add_new: 'Відгукнутись'
+    moderator: 'Модератор'
   activerecord:
     attributes:
       request:
