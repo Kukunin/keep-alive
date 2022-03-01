@@ -14,7 +14,7 @@
         { include_blank: true },
         class: 'w-30 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 py-1 mr-2 my-2',
         data: { action: "change->autosubmit#submit" }
-        ) %>
+      ) %>
       <%= f.submit class: 'inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500', style: 'transform: translateY(-1px)', data: { 'autosubmit-target' => "submit" } %>
     <% end %>
   </div>
@@ -24,22 +24,22 @@
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-2 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 <%= sort_link(@q, :region) %>
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-2 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 <%= sort_link(@q, :city) %>
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-2 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 <%= sort_link(@q, :title) %>
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-2 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 <%= sort_link(@q, :comments_count) %>
               </th>
-              <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+              <th scope="col" class="px-2 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 <%= sort_link(@q, :created_at) %>
               </th>
-              <th scope="col" class="relative px-6 py-3">
+              <th scope="col" class="relative px-2 lg:px-6 py-3">
                 <span class="sr-only"><%= t('common.details') %></span>
               </th>
             </tr>
@@ -47,38 +47,36 @@
           <tbody>
             <% @requests.each_with_index do |request, i| %>
               <%= content_tag :tr, id: dom_id(request), class: "hover:bg-gray-100 #{dom_class(request)} #{(i % 2).zero? ? 'bg-white' : 'bg-gray-50'}" do %>
-                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
+                <td class="px-2 lg:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   <%= request.region %>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td class="px-2 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <%= request.city %>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td class="px-2 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <%= request.title %>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td class="px-2 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <%= request.comments_count %>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <td class="px-2 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <time datetime="<%= request.created_at.iso8601 %>">
                     <%= time_ago_in_words(request.created_at) %> <%= t('common.ago') %>
                   </time>
                 </td>
-                <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+                <td class="px-2 lg:px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                   <%= link_to t('common.details'), request, class: 'text-indigo-600 hover:text-indigo-900' %>
                 </td>
               <% end %>
             <% end %>
           </tbody>
         </table>
-        <div class="bg-white px-4 py-3 flex items-center justify-between border-t border-gray-200 sm:px-6">
-          <div class="hidden sm:flex-1 sm:flex sm:items-center sm:justify-between">
-            <div class="text-sm text-gray-700">
-              <%== pagy_info(@pagy) %>
-            </div>
-            <div>
-              <%== pagy_nav(@pagy) %>
-            </div>
+        <div class="bg-white px-2 py-3 border-t border-gray-200 sm:px-6 md:flex md:items-center md:justify-between">
+          <div class="text-sm py-2 text-gray-700">
+            <%== pagy_info(@pagy) %>
+          </div>
+          <div>
+            <%== pagy_nav(@pagy) %>
           </div>
         </div>
       </div>
