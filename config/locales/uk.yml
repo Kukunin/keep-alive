@@ -12,8 +12,8 @@ uk:
     contacts: 'Контактні дані'
     loading: 'Завантажую'
   requests:
-    create_new: 'Створити новий запит'
-    created: 'Запит був успішно створений'
+    create_new: 'Створити новий заклик'
+    created: 'Заклик був успішно створений'
     get_contacts: 'Відкрити контактні дані'
   comments:
     no_records: 'Немає жодного коментаря'
@@ -40,13 +40,13 @@ uk:
         created_at: Створено
     models:
       request:
-        one: Запит про допомогу
-        few: Запити про допомогу
-        other: 'запитів про допомогу'
+        one: Заклик про допомогу
+        few: Заклики про допомогу
+        other: 'закликів про допомогу'
       comment:
         one: Коментар
         few: Коментарі
-        other: 'запитів про допомогу'
+        other: 'закликів про допомогу'
   admin:
     titles:
       index: 'Список %{pluralized_model_name}'
