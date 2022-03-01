@@ -54,7 +54,7 @@ uk:
           active: Обробляється
           done: Завершено
         type_enum:
-          ask: Прошуть
+          ask: Просять
           provide: Надають
       comment:
         username: Користувач
