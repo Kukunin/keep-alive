@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   mount ActionCable.server => '/cable'
 
   resources :requests, except: %i[index new edit update destroy] do
+    get '/', to: redirect('/requests/asks'), on: :collection
     post :contacts, on: :member
     %w[ask provide].each do |type|
       get type.pluralize, on: :collection, action: 'index', type: type
