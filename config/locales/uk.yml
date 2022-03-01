@@ -61,3 +61,5 @@ uk:
   admin:
     titles:
       index: 'Список %{pluralized_model_name}'
+    format:
+      blank: '—'
