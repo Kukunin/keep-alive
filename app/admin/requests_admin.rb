@@ -22,7 +22,7 @@ Trestle.resource(:requests) do
   # Customize the form fields shown on the new/edit views.
   form do |request|
     tab :request do
-      select :status, options_for_select([:new, :active, :done]), { include_blank: false }
+      select :status, options_for_select(%i[new active done]), { include_blank: false }
       select :region, options_for_select(Region.regions), { include_blank: true }
       text_field :city
       text_field :address

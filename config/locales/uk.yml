@@ -11,10 +11,16 @@ uk:
     region: 'область'
     contacts: 'Контактні дані'
     loading: 'Завантажую'
+    error:
+      one: 'помилка'
+      few: 'помилки'
+      many: 'помилок'
+    form_error: 'Упс, ми не можемо зберегти форму, бо'
   requests:
     create_new: 'Створити новий заклик'
     created: 'Заклик був успішно створений'
     get_contacts: 'Відкрити контактні дані'
+    at_least_one_contact: 'Не вказано жодних контактних даних'
   comments:
     no_records: 'Немає жодного коментаря'
     add_new: 'Відгукнутись'
