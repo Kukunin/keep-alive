@@ -107,6 +107,10 @@ GEM
     digest (3.1.0)
     domain_name (0.5.20190701)
       unf (>= 0.0.5, < 1.0.0)
+    dotenv (2.7.6)
+    dotenv-rails (2.7.6)
+      dotenv (= 2.7.6)
+      railties (>= 3.2)
     dry-cli (0.7.0)
     erubi (1.10.0)
     erubis (2.7.0)
@@ -425,6 +429,7 @@ DEPENDENCIES
   debug
   devise
   devise_masquerade (~> 1.2)
+  dotenv-rails
   friendly_id (~> 5.3)
   haml-rails (~> 2.0)
   hotwire-rails

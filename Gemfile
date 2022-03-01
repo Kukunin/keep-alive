@@ -40,6 +40,9 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+# Autoload dotenv in Rails. (https://github.com/bkeepers/dotenv)
+gem 'dotenv-rails'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
