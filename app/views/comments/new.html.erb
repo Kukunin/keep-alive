@@ -5,8 +5,14 @@
                 data: { controller: 'reset-form', action: 'turbo:submit-end->reset-form#reset'}) do |f| %>
     <div class="grid grid-cols-1 gap-2">
       <div>
-        <%= f.label :username, class: 'text-gray-700' %>
-        <%= f.text_field :username, required: true, maxlength: 100, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+        <% if current_user %>
+          <span class="text-gray-400">
+            Як <strong><%= current_user.name %></strong>
+          </span>
+        <% else %>
+          <%= f.label :username, class: 'text-gray-700' %>
+          <%= f.text_field :username, required: true, maxlength: 100, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+        <% end %>
       </div>
       <div>
         <%= f.label :message, class: 'text-gray-700' %>
