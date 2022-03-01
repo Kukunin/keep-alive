@@ -12,6 +12,8 @@ uk:
   requests:
     create_new: 'Створити новий запит'
     created: 'Запит був успішно створений'
+  comments:
+    no_records: 'Немає жодного коментаря'
   activerecord:
     attributes:
       request:
@@ -25,10 +27,17 @@ uk:
         reporter_ip: IP адреса
         updated_at: Оновлено
         created_at: Створено
+      comment:
+        username: Користувач
+        message: Повідомлення
     models:
       request:
         one: Запит про допомогу
         few: Запити про допомогу
+        other: 'запитів про допомогу'
+      comment:
+        one: Коментар
+        few: Коментарі
         other: 'запитів про допомогу'
   admin:
     titles:
