@@ -1,0 +1,17 @@
+<header class="bg-indigo-600 mb-10" style="background-color: #2400e8;">
+  <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="Top">
+    <div class="w-full py-6 flex items-center justify-between border-b border-indigo-500 lg:border-none">
+      <div class="flex items-center">
+        <a href="/">
+          <span class="sr-only"><%= t(:short_title) %></span>
+          <img class="h-10 w-auto" src="/nahui.png" alt="">
+        </a>
+        <div class="hidden ml-10 space-x-8 lg:block">
+          <a href="/requests" class="text-base font-medium text-white hover:text-indigo-50"> <%= t('nav.requests') %> </a>
+
+          <a href="/about" class="text-base font-medium text-white hover:text-indigo-50"> <%= t('nav.about') %> </a>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>

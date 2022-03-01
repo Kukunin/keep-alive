@@ -3,6 +3,7 @@ require 'sidekiq/web'
 Rails.application.routes.draw do
   resources :requests, except: %i[edit update]
 
+  get '/about', to: 'home#about'
   get '/privacy', to: 'home#privacy'
   get '/terms', to: 'home#terms'
   authenticate :user, ->(u) { u.admin? } do
