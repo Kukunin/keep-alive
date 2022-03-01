@@ -4,6 +4,14 @@ Trestle.resource(:requests) do
   end
 
   search_form do |q|
+    select(
+      :status_eq,
+      options_for_select(
+        %i[new active done].index_by { |status| Request.human_status(status) },
+        q.status_eq
+      ),
+      { include_blank: true }
+    )
     select :region_eq, options_for_select(Region.regions, q.region_eq), { include_blank: true }
   end
 
