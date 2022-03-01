@@ -68,6 +68,16 @@ class RequestsController < ApplicationController
     end
   end
 
+  def destroy_multiple_files
+    attachments = ActiveStorage::Attachment.where(id: params[:deleted_img_ids])
+    attachments.map(&:purge)
+
+    respond_to do |format|
+      format.html { redirect_to edit_request_url, notice: 'Files was successfully destroyed.' }
+      format.json { head :no_content }
+    end
+  end
+
   private
 
   # Use callbacks to share common setup or constraints between actions.
@@ -83,7 +93,7 @@ class RequestsController < ApplicationController
     params
       .require(:request)
       .permit(:type, :title, :region, :city, :district, :address, :contact_name, :phone, :viber,
-              :telegram, :description, :skype, :instagram, :latitude, :longitude)
+              :telegram, :description, :skype, :instagram, :latitude, :longitude, files: [])
       .merge(reporter_ip: request.remote_ip, user: current_user)
   end
 

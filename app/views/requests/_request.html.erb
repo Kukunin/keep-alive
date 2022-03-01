@@ -68,6 +68,17 @@
           </dt>
           <dd class="mt-1 text-sm text-gray-900 whitespace-pre-line"><%= request.description.strip %></dd>
         </div>
+
+        <div class="sm:col-span-2">
+          <dt class="text-sm font-medium text-gray-500">
+            <%= Request.human_attribute_name(:files) %>
+          </dt>
+          <div>
+            <% @request.files.each do |file| %>
+              <%= image_tag(file, :width => 500) %>
+            <% end %>
+          </div>
+        </div>
       </dl>
     </div>
   </div>

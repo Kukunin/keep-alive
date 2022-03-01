@@ -65,9 +65,32 @@
     </div>
 
     <div>
+      <% if @request.files.attached? %>
+        <% @request.files.each do |file| %>
+          <div class="box_image">
+            <div class="box_content">
+              <%= image_tag file, :width => 500 %>
+              <%= check_box_tag "deleted_img_ids[]", file.id %>
+            </div>
+          </div>
+        <% end %>
+        <%= f.submit "Delete selected", class: 'bg-red-700 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white disabled:opacity-50', style: "background: red; margin-top:10px; cursor:pointer", formaction: destroy_files_request_path %>
+      <% else %>
+        <div data-controller="multi-upload">
+          <div class="files">
+            <%= f.label :files %>
+            <%= f.file_field :files, :multiple => true, :data => {:action => "multi-upload#addFile"} %>
+          </div>
+
+          <div data-multi-upload-target="files"></div>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
       <% if request.persisted? %>
         <div class="float-right">
-          <%= link_to 'Destroy', request, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Destroy', request, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' }, style: "background: red; color:white; padding:5px 10px; border-radius:5px; cursor:pointer" %>
         </div>
       <% end %>
 

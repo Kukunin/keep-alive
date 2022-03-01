@@ -43,6 +43,8 @@ gem 'bootsnap', require: false
 # Autoload dotenv in Rails. (https://github.com/bkeepers/dotenv)
 gem 'dotenv-rails'
 
+gem "aws-sdk-s3", require: false
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
       get type.pluralize, on: :collection, action: 'index', type: type
       get "#{type.pluralize}/new", on: :collection, action: 'new', type: type
     end
+    patch 'destroy_files', on: :member, action: 'destroy_multiple_files'
 
     resources :comments, only: %i[index show new create]
   end
