@@ -24,9 +24,11 @@
         <table class="min-w-full divide-y divide-gray-200">
           <thead class="bg-gray-50">
             <tr>
+              <% if @q.region_eq.blank? %>
               <th scope="col" class="px-2 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 <%= sort_link(@q, :region) %>
               </th>
+              <% end %>
               <th scope="col" class="px-2 lg:px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                 <%= sort_link(@q, :city) %>
               </th>
@@ -47,9 +49,11 @@
           <tbody>
             <% @requests.each_with_index do |request, i| %>
               <%= content_tag :tr, id: dom_id(request), class: "hover:bg-gray-100 #{dom_class(request)} #{(i % 2).zero? ? 'bg-white' : 'bg-gray-50'}" do %>
+                <% if @q.region_eq.blank? %>
                 <td class="px-2 lg:px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">
                   <%= request.region %>
                 </td>
+                <% end %>
                 <td class="px-2 lg:px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                   <%= request.city %>
                 </td>
