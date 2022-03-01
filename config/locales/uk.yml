@@ -32,6 +32,9 @@ uk:
       comment:
         username: Користувач
         message: Повідомлення
+        ip_address: IP адреса
+        updated_at: Оновлено
+        created_at: Створено
     models:
       request:
         one: Запит про допомогу
