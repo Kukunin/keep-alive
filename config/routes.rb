@@ -2,6 +2,7 @@ require 'sidekiq/web'
 
 Rails.application.routes.draw do
   resources :requests, except: %i[edit update destroy] do
+    post :contacts, on: :member
     resources :comments, only: %i[index show new create]
   end
 

@@ -9,9 +9,11 @@ uk:
     ago: 'тому'
     region: 'область'
     contacts: 'Контактні дані'
+    loading: 'Завантажую'
   requests:
     create_new: 'Створити новий запит'
     created: 'Запит був успішно створений'
+    get_contacts: 'Відкрити контактні дані'
   comments:
     no_records: 'Немає жодного коментаря'
     add_new: 'Відгукнутись'
