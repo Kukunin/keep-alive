@@ -32,6 +32,11 @@ uk:
         comments_count: Відгуків
         updated_at: Оновлено
         created_at: Створено
+        status: Статус
+        status_enum:
+          new: Нова
+          active: Обробляється
+          done: Завершено
       comment:
         username: Користувач
         message: Повідомлення
