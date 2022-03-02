@@ -30,3 +30,8 @@
 
 @tailwind components;
 @tailwind utilities;
+
+.required:after {
+    content:" *";
+    color: red;
+}
