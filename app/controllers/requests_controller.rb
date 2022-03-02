@@ -1,5 +1,6 @@
 class RequestsController < ApplicationController
   before_action :set_request, only: %i[show edit update destroy contacts]
+  before_action :require_admin, only: %i[edit update]
 
   # GET /requests or /requests.json
   def index
@@ -27,7 +28,7 @@ class RequestsController < ApplicationController
 
   # POST /requests or /requests.json
   def create
-    @request = Request.new(request_params)
+    @request = Request.new(create_request_params)
     @type = @request.type
 
     respond_to do |format|
@@ -46,7 +47,7 @@ class RequestsController < ApplicationController
   # PATCH/PUT /requests/1 or /requests/1.json
   def update
     respond_to do |format|
-      if @request.update(request_params)
+      if @request.update(update_request_params)
         format.html do
           redirect_to request_url(@request), notice: 'Request was successfully updated.'
         end
@@ -75,12 +76,19 @@ class RequestsController < ApplicationController
     @request = Request.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
-  def request_params
+  def update_request_params
+    params.require(:request).permit!
+  end
+
+  def create_request_params
     params
       .require(:request)
       .permit(:type, :title, :region, :city, :address, :contact_name, :phone, :viber,
               :telegram, :description, :skype)
       .merge(reporter_ip: request.remote_ip, user: current_user)
+  end
+
+  def require_admin
+    head(:forbidden) unless current_user&.admin?
   end
 end

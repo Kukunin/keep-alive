@@ -3,6 +3,16 @@
 
   <%= f.hidden_field :type, value: type %>
   <div class="grid grid-cols-1 gap-6">
+    <% if current_user&.admin? && request.persisted? %>
+      <div>
+        <%= f.label :status, class: 'text-gray-700' %>
+        <%= f.select :status, status_options(request.status), {}, required: true, class: 'block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+      </div>
+      <div>
+        <%= f.label :type, class: 'text-gray-700' %>
+        <%= f.select :type, types_options(request.type), {}, required: true, class: 'block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+      </div>
+    <% end %>
     <div>
       <%= f.label :title, class: 'text-gray-700' %>
       <%= f.text_field :title, required: true, maxlength: 100, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
@@ -51,7 +61,7 @@
         </div>
       <% end %>
 
-      <%= f.submit t('requests.create_new'), class: 'inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50' %>
+      <%= f.submit t(request.persisted? ? 'requests.save_existing' : 'requests.create_new'), class: 'inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50' %>
 
       <%= link_to "Повернутись", send("#{type.pluralize}_requests_path"), class: "inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
     </div>

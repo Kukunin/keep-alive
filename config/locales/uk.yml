@@ -19,6 +19,7 @@ uk:
     form_error: 'Упс, ми не можемо зберегти форму, бо'
   requests:
     create_new: 'Додати'
+    save_existing: 'Зберегти'
     created: 'Запис був успішно доданий'
     get_contacts: 'Відкрити контактні дані'
     at_least_one_contact: 'Не вказано жодних контактних даних'
