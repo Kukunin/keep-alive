@@ -81,6 +81,6 @@ class RequestsController < ApplicationController
       .require(:request)
       .permit(:type, :title, :region, :city, :address, :contact_name, :phone, :viber,
               :telegram, :description, :skype)
-      .merge(reporter_ip: request.remote_ip)
+      .merge(reporter_ip: request.remote_ip, user: current_user)
   end
 end
