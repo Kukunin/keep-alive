@@ -24,4 +24,10 @@ module RequestsHelper
   def human_district(district)
     district && "#{district} #{I18n.t('common.district')}"
   end
+
+  def request_full_city(request)
+    [request.city, human_district(request.district), human_region(request.region)]
+      .filter(&:present?)
+      .join(', ')
+  end
 end

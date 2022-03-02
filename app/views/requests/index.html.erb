@@ -69,7 +69,7 @@
                   </p>
                 </div>
                 <div class="text-gray-500 flex items-center justify-between">
-                  <p><%= request.city %>, <%= human_region(request.region) %></p>
+                  <p><%= request_full_city(request) %></p>
                   <time datetime="<%= request.created_at.iso8601 %>">
                     <%= time_ago_in_words(request.created_at) %> <%= t('common.ago') %>
                   </time>
