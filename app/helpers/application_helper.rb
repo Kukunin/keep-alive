@@ -1,6 +1,16 @@
 module ApplicationHelper
   include Pagy::Frontend
 
+  def page_title
+    title = content_for(:title).presence || t(:title)
+    # content_for(:title) does escaping already
+    join_title([title, t(:short_title)]).html_safe
+  end
+
+  def join_title(title)
+    title.flatten.filter(&:present?).join(' — ')
+  end
+
   def avatar_path(object, options = {})
     size = options[:size] || 180
     default_image = options[:default] || 'mp'

@@ -1,3 +1,5 @@
+<% content_for(:title, join_title([@request.title, human_region(@request.region)])) %>
+
 <%= turbo_stream_from(@request) %>
 <%= turbo_frame_tag("request") do %>
   <%= render @request %>

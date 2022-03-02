@@ -1,3 +1,4 @@
+<% content_for(:title, join_title([t("requests.#{@type}.list"), human_region(@q.region_eq)])) %>
 <div class="sm:flex sm:justify-between mb-4">
   <h2 class="pb-2"><%= t("requests.#{@type}.list") %></h2>
 

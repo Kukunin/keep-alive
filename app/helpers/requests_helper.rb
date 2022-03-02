@@ -12,4 +12,12 @@ module RequestsHelper
       value
     )
   end
+
+  def with_region(title, region)
+    [title, human_region(region)].filter(&:present?)
+  end
+
+  def human_region(region)
+    region && "#{region} #{I18n.t('common.region')}"
+  end
 end
