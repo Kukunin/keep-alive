@@ -94,6 +94,7 @@ gem 'activerecord-postgres_enum'
 gem 'devise'
 gem 'devise_masquerade', '~> 1.2'
 gem 'friendly_id', '~> 5.3'
+gem 'heroicon'
 gem 'hotwire-rails'
 gem 'image_processing'
 gem 'js_from_routes', group: :development

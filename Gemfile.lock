@@ -144,6 +144,8 @@ GEM
       html2haml (>= 1.0.1)
       railties (>= 5.1)
     hashie (5.0.0)
+    heroicon (0.4.0)
+      rails (>= 5.2)
     hotwire-rails (0.1.3)
       rails (>= 6.0.0)
       stimulus-rails
@@ -460,6 +462,7 @@ DEPENDENCIES
   faker
   friendly_id (~> 5.3)
   haml-rails (~> 2.0)
+  heroicon
   hotwire-rails
   image_processing
   importmap-rails

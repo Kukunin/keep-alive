@@ -22,7 +22,7 @@ class Request < ApplicationRecord
   validates :status, presence: true, inclusion: { in: STATUSES }
   validates :type, presence: true, inclusion: { in: TYPES }
 
-  validates :phone, presence: true, if: -> { viber && %w[f 0].exclude?(viber) }
+  validates :phone, presence: true, if: :viber?
   validate :at_least_one_contact_is_there
 
   def self.statuses
@@ -31,6 +31,10 @@ class Request < ApplicationRecord
 
   def self.types
     TYPES
+  end
+
+  def viber?
+    viber && %w[f 0].exclude?(viber)
   end
 
   def human_status
