@@ -19,9 +19,7 @@ class RequestsController < ApplicationController
   end
 
   # POST /requests/1/contacts
-  def contacts
-    sleep 3
-  end
+  def contacts; end
 
   # GET /requests/1/edit
   def edit; end

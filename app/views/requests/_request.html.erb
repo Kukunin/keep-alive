@@ -33,7 +33,7 @@
             </p>
             <% if request.address.present? %>
               <p>
-                <%= image_tag "data:image/png;base64,#{image_for_text(request.address)}" %>
+                <%= protect_sensitive(request.address) %>
               </p>
             <% end %>
           </dd>
@@ -55,16 +55,7 @@
           </dd>
         </div>
         <div class="sm:col-span-1">
-          <%= turbo_frame_tag "contacts" do %>
-            <dt>
-              <%= button_to(
-                t('requests.get_contacts'),
-                contacts_request_path(request),
-                method: :POST,
-                class: 'inline-flex items-center px-3 py-2 border border-gray-300 shadow-sm text-sm leading-4 font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50'
-              ) %>
-            </dt>
-          <% end %>
+          <%= turbo_frame_tag "contacts", src: contacts_request_path(request) %>
         </div>
         <div class="sm:col-span-2">
           <dt class="text-sm font-medium text-gray-500">
