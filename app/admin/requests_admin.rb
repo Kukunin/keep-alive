@@ -53,14 +53,22 @@ Trestle.resource(:requests) do
                request.status
              ),
              { include_blank: false }
+
+      text_field :title
+      text_field :description
+
       select :region,
              options_for_select(Region.regions, request.region),
              { include_blank: true }
+
       text_field :district
       text_field :city
       text_field :address
-      text_field :title
-      text_field :description
+
+      row do
+        col { text_field :longitude }
+        col { text_field :latitude }
+      end
 
       text_field :contact_name
 

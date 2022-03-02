@@ -44,6 +44,8 @@ uk:
         city: Місто
         title: Заголовок
         address: Адреса
+        longitude: Довгота
+        latitude: Широта
         contact_name: Ім'я для контакту
         phone: Телефон
         description: Опис
