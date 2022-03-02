@@ -28,6 +28,7 @@ Trestle.resource(:requests) do
     column :status, ->(request) { request.human_status }
     column :type, ->(request) { request.human_type }
     column :region
+    column :district
     column :city
     column :title
     column :comments_count
@@ -52,13 +53,22 @@ Trestle.resource(:requests) do
                request.status
              ),
              { include_blank: false }
+
+      text_field :title
+      text_field :description
+
       select :region,
              options_for_select(Region.regions, request.region),
              { include_blank: true }
+
+      text_field :district
       text_field :city
       text_field :address
-      text_field :title
-      text_field :description
+
+      row do
+        col { text_field :longitude }
+        col { text_field :latitude }
+      end
 
       text_field :contact_name
 
@@ -68,11 +78,14 @@ Trestle.resource(:requests) do
       end
 
       row do
-        col { text_field :skype }
         col { text_field :telegram }
+        col { text_field :instagram }
       end
 
-      text_field :reporter_ip
+      row do
+        col { text_field :skype }
+        col { text_field :reporter_ip }
+      end
 
       row do
         col { datetime_field :updated_at }

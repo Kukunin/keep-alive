@@ -55,7 +55,7 @@ class Request < ApplicationRecord
 
   private
 
-  CONTACT_FIELDS = %i[address phone telegram skype].freeze
+  CONTACT_FIELDS = %i[address phone telegram skype instagram].freeze
 
   def at_least_one_contact_is_there
     return if CONTACT_FIELDS.map { |field| send(field).presence }.any?

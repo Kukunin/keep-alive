@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_03_01_223721) do
+ActiveRecord::Schema[7.0].define(version: 2022_03_02_205819) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,6 +114,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_03_01_223721) do
     t.enum "status", default: "new", enum_type: "request_status"
     t.integer "user_id"
     t.string "type", default: "ask", null: false
+    t.string "district"
+    t.string "instagram"
+    t.float "latitude"
+    t.float "longitude"
     t.index ["created_at"], name: "index_requests_on_created_at"
     t.index ["type"], name: "index_requests_on_type"
     t.index ["updated_at"], name: "index_requests_on_updated_at"

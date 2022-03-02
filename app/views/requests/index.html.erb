@@ -59,6 +59,9 @@
                     <% if request.telegram.present? %>
                       <img class="w-5 h-5 opacity-80" src="/icons/telegram-desktop.svg"/>
                     <% end %>
+                    <% if request.instagram.present? %>
+                      <img class="w-5 h-5 opacity-80" src="https://img.icons8.com/material-outlined/48/000000/instagram-new--v1.png" alt="Instagram" />
+                    <% end %>
                     <% if request.skype.present? %>
                       <img class="w-5 h-5" src="https://img.icons8.com/color/48/000000/skype--v1.png"/>
 
@@ -66,7 +69,7 @@
                   </p>
                 </div>
                 <div class="text-gray-500 flex items-center justify-between">
-                  <p><%= request.city %>, <%= human_region(request.region) %></p>
+                  <p><%= request_full_city(request) %></p>
                   <time datetime="<%= request.created_at.iso8601 %>">
                     <%= time_ago_in_words(request.created_at) %> <%= t('common.ago') %>
                   </time>

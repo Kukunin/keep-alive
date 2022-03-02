@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   resources :requests, except: %i[index new destroy] do
     get '/', to: redirect('/requests/asks'), on: :collection
-    post :contacts, on: :member
+    get :contacts, on: :member
     %w[ask provide].each do |type|
       get type.pluralize, on: :collection, action: 'index', type: type
       get "#{type.pluralize}/new", on: :collection, action: 'new', type: type
