@@ -25,11 +25,11 @@
       <dl class="grid grid-cols-1 gap-x-2 gap-y-4 sm:grid-cols-2">
         <div class="sm:col-span-1">
           <dt class="text-sm font-medium text-gray-500">
-            <%= Request.human_attribute_name(:city) %>
+            <%= Request.human_attribute_name(:address) %>
           </dt>
           <dd class="mt-1 text-sm text-gray-900">
             <p>
-              <%= image_tag "data:image/png;base64,#{image_for_text([request.city, "#{request.region} #{t('common.region')}"].join(', '))}" %>
+              <%= [request.city, human_district(request.district), human_region(request.region)].join(', ') %>
             </p>
             <% if request.address.present? %>
               <p>

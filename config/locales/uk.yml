@@ -10,6 +10,7 @@ uk:
     details: 'Деталі'
     ago: 'тому'
     region: 'область'
+    district: 'район'
     contacts: 'Контактні дані'
     loading: 'Завантажую'
     error:
@@ -39,6 +40,7 @@ uk:
     attributes:
       request:
         region: Область
+        district: Район
         city: Місто
         title: Заголовок
         address: Адреса

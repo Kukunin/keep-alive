@@ -20,4 +20,8 @@ module RequestsHelper
   def human_region(region)
     region && "#{region} #{I18n.t('common.region')}"
   end
+
+  def human_district(district)
+    district && "#{district} #{I18n.t('common.district')}"
+  end
 end

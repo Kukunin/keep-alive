@@ -20,6 +20,12 @@ module ContactsHelper
     "https://t.me/#{username}"
   end
 
+  def instagram_link(instagram)
+    username = instagram.gsub(/^@?/, '')
+
+    "https://www.instagram.com/#{username}"
+  end
+
   def skype_link(skype)
     "skype:#{skype}"
   end

@@ -83,8 +83,8 @@ class RequestsController < ApplicationController
   def create_request_params
     params
       .require(:request)
-      .permit(:type, :title, :region, :city, :address, :contact_name, :phone, :viber,
-              :telegram, :description, :skype)
+      .permit(:type, :title, :region, :city, :district, :address, :contact_name, :phone, :viber,
+              :telegram, :description, :skype, :instagram, :latitude, :longitude)
       .merge(reporter_ip: request.remote_ip, user: current_user)
   end
 
