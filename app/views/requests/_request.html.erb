@@ -29,8 +29,13 @@
           </dt>
           <dd class="mt-1 text-sm text-gray-900">
             <p>
-              <%= [request.city, "#{request.region} #{t('common.region')}"].join(', ') %>
+              <%= image_tag "data:image/png;base64,#{image_for_text([request.city, "#{request.region} #{t('common.region')}"].join(', '))}" %>
             </p>
+            <% if request.address.present? %>
+              <p>
+                <%= image_tag "data:image/png;base64,#{image_for_text(request.address)}" %>
+              </p>
+            <% end %>
           </dd>
         </div>
         <div class="sm:col-span-1">
