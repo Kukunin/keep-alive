@@ -13,6 +13,7 @@ Rails.application.routes.draw do
 
     resources :comments, only: %i[index show new create]
   end
+  resources :warnings, only: %i[index update]
 
   get '/about', to: 'home#about'
   get '/privacy', to: 'home#privacy'
