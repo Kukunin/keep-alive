@@ -54,6 +54,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'factory_bot_rails'
   gem 'rspec-rails'
+  gem 'pry'
 end
 
 group :development do
@@ -111,3 +112,4 @@ gem 'sidekiq', '~> 6.0', '>= 6.0.3'
 gem 'sitemap_generator', '~> 6.1', '>= 6.1.2'
 gem 'vite_rails'
 gem 'whenever', require: false
+gem 'rmagick'
