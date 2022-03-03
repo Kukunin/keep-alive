@@ -22,7 +22,7 @@
           <%= protect_sensitive(@request.phone) %>
         </li>
       <% end %>
-      <% if @request.viber.present? && @request.phone.present? %>
+      <% if @request.viber? && @request.phone.present? %>
         <li class="flex space-x-2">
           <span title="<%= Request.human_attribute_name(:viber) %>">
             <img class="w-6 h-6 inline-block" src="https://img.icons8.com/color/48/000000/viber.png"/>
