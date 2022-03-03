@@ -1,6 +1,6 @@
 module ContactsHelper
   def protect_sensitive(text)
-    return content_tag(:span, text) if current_user&.admin?
+    return content_tag(:span, text) if (current_user&.admin? rescue nil)
 
     image_tag "data:image/png;base64,#{image_for_text(text)}"
   end
