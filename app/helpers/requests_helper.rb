@@ -22,7 +22,9 @@ module RequestsHelper
   end
 
   def human_district(district)
-    district && "#{district} #{I18n.t('common.district')}"
+    return if district.blank?
+
+    district.include?(I18n.t('common.district')) ? district : "#{district} #{I18n.t('common.district')}"
   end
 
   def request_full_city(request)
