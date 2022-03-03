@@ -6,7 +6,8 @@ class RequestsController < ApplicationController
   def index
     @type = params[:type]
     @q = Request.ransack(params[:q])
-    @pagy, @requests = pagy(@q.result.where(type: @type).order(created_at: :desc))
+    scope = @q.result.where(type: @type).where.not(status: 'done').order(created_at: :desc)
+    @pagy, @requests = pagy(scope)
   end
 
   # GET /requests/1 or /requests/1.json
