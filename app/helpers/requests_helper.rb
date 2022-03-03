@@ -30,4 +30,18 @@ module RequestsHelper
       .filter(&:present?)
       .join(', ')
   end
+
+  def request_status_label(request)
+    status_css_class = if request.status == "new"
+      "bg-blue-500"
+    elsif request.status == "active"
+      "bg-orange-500"
+    elsif request.status == "done"
+      "bg-green-500"
+    else
+      "bg-green-500"
+    end
+
+    content_tag :span, request.human_status, class: "#{status_css_class} text-white p-1 rounded"
+  end
 end
