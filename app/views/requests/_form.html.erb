@@ -14,6 +14,10 @@
       </div>
     <% end %>
     <div>
+      <%= f.label :tags, class: 'text-gray-700' %>
+      <%= f.select :tags, tags_options(request.tags), {}, multiple: true, include_blank: false, class: 'block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+    <div>
       <%= f.label :title, class: 'text-gray-700' %>
       <%= f.text_field :title, required: true, maxlength: 100, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
     </div>

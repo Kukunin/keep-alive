@@ -13,6 +13,13 @@ module RequestsHelper
     )
   end
 
+  def tags_options(value)
+    options_for_select(
+      Tag.all.map { |tag| [tag.title, tag.id] },
+      value
+    )
+  end
+
   def with_region(title, region)
     [title, human_region(region)].filter(&:present?)
   end
