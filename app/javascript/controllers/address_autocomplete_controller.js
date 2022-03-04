@@ -7,7 +7,7 @@ export default class extends Controller {
   static targets = ["search", "latitude", "longitude", "region", "district", "city", "address", "apartment"];
 
   initialize() {
-    regions = JSON.parse(this.regionTarget.dataset['regions']);
+    regions = Array.from(this.regionTarget.querySelectorAll('option')).map(option => option.value);
   }
 
   connect() {
@@ -42,24 +42,24 @@ export default class extends Controller {
       select: (e, ui) => {
         const { location, location: { address } } = ui.item;
 
-        this.latitudeTarget.value  = location.lat || null;
-        this.longitudeTarget.value = location.lon || null;
-        this.regionTarget.value    = this.selectRegion(address) || null;
-        this.districtTarget.value  = address.district || null;
-        this.cityTarget.value      = address.city || null;
-        this.addressTarget.value   = street = this.prepareAddress(address) || null;
+        this.regionTarget.selectedIndex = this.getRegionIndex(address);
+        this.latitudeTarget.value       = location.lat || null;
+        this.longitudeTarget.value      = location.lon || null;
+        this.districtTarget.value       = address.district || null;
+        this.cityTarget.value           = address.city || null;
+        this.addressTarget.value        = street = this.prepareAddress(address) || null;
 
         address.house_number ? this.showApartmentField() : this.hideApartmentField();
       },
       change: (e, ui) => {
         if (!ui.item) {
-          this.latitudeTarget.value  = null;
-          this.longitudeTarget.value = null;
-          this.regionTarget.value    = null;
-          this.districtTarget.value  = null;
-          this.cityTarget.value      = null;
-          this.addressTarget.value   = null;
-          this.apartmentTarget.value = null;
+          this.regionTarget.selectedIndex = 0;
+          this.latitudeTarget.value       = null;
+          this.longitudeTarget.value      = null;
+          this.districtTarget.value       = null;
+          this.cityTarget.value           = null;
+          this.addressTarget.value        = null;
+          this.apartmentTarget.value      = null;
 
           this.invalidateSearch();
           this.hideApartmentField();
@@ -68,9 +68,16 @@ export default class extends Controller {
     });
   }
 
-  selectRegion(address) {
+  getRegionIndex(address) {
+    if (address.city === 'Київ') return regions.indexOf('Київська');
+
+    if (!address.state) return 0;
+
     const regionWords = address.state.split(' ');
-    return regions.find(region => region.split(' ').find(regionWord => regionWords.includes(regionWord)));
+
+    return regions.findIndex(region => {
+      return region.split(' ').find(regionWord => regionWords.includes(regionWord));
+    });
   }
 
   prepareAddress(address) {
@@ -90,6 +97,6 @@ export default class extends Controller {
   }
 
   completeAddress = (e) => {
-    this.addressTarget.value = [street, `кв. ${e.target.value}`].filter(e => e).join(', ');
+    this.addressTarget.value = street && `${street}, кв. ${e.target.value}`;
   }
 }

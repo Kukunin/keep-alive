@@ -4,7 +4,6 @@
   <%= f.hidden_field :type, value: type %>
   <%= f.hidden_field :latitude, data: { 'address-autocomplete-target': 'latitude' } %>
   <%= f.hidden_field :longitude, data: { 'address-autocomplete-target': 'longitude' } %>
-  <%= f.hidden_field :region, value: request.region, data: { 'address-autocomplete-target': 'region', regions: Region.regions } %>
   <%= f.hidden_field :district, data: { 'address-autocomplete-target': 'district' } %>
   <%= f.hidden_field :city, data: { 'address-autocomplete-target': 'city' } %>
   <%= f.hidden_field :address, data: { 'address-autocomplete-target': 'address' } %>
@@ -27,6 +26,10 @@
     <div>
       <%= f.label :description, class: 'text-gray-700' %>
       <%= f.text_area :description, rows: 5, class: 'mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
+    </div>
+    <div>
+      <%= f.label :region, class: 'text-gray-700' %>
+      <%= f.select :region, options_for_select(Region.regions, request.region), {}, data: { 'address-autocomplete-target': 'region' }, required: true, class: 'block w-full mt-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50' %>
     </div>
     <div>
       <%= f.label :street, class: 'text-gray-700' %>
