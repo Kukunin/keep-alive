@@ -33,6 +33,10 @@ module RequestsHelper
       .join(', ')
   end
 
+  def request_full_address(request)
+    [request_full_city(request), request.address].filter(&:present?).join(', ')
+  end
+
   def request_status_label(request)
     status_css_class = if request.status == "new"
       "bg-blue-500"

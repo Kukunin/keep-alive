@@ -24,6 +24,7 @@ uk:
     created: 'Запис був успішно доданий'
     get_contacts: 'Відкрити контактні дані'
     at_least_one_contact: 'Не вказано жодних контактних даних'
+    address_search_error: 'Веедіть правильну адресу та підтвердіть її вибравши зі випадаючого списку'
     ask:
       item: 'Заклик про допомогу'
       list: 'Заклики про допомогу'
@@ -36,6 +37,10 @@ uk:
     no_records: 'Немає жодного коментаря'
     add_new: 'Відгукнутись'
     moderator: 'Модератор'
+  helpers:
+    placeholder:
+      request:
+        street: 'Введіть адресу для пошуку...'
   activerecord:
     attributes:
       request:
@@ -44,6 +49,8 @@ uk:
         city: Місто
         title: Заголовок
         address: Адреса
+        street: Вулиця / Будинок
+        apartment: Квартира
         longitude: Довгота
         latitude: Широта
         contact_name: Ім'я для контакту

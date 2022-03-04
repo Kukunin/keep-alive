@@ -1,16 +1,30 @@
 import { Controller } from "stimulus"
 
-let regions = []
+let regions = [];
+let street = '';
 
 export default class extends Controller {
-  static targets = ["search", "latitude", "longitude", "region", "district", "city", "address"];
+  static targets = ["search", "latitude", "longitude", "region", "district", "city", "address", "apartment"];
 
   initialize() {
     regions = JSON.parse(this.regionTarget.dataset['regions']);
   }
 
   connect() {
+    this.watchApartmentChange();
+    this.hideApartmentField();
     this.initAutocomplete();
+    this.setSearchValidation();
+  }
+
+  setSearchValidation() {
+    this.searchTarget.addEventListener('invalid', function () { this.setCustomValidity(this.dataset['errorMessage']) });
+    this.searchTarget.addEventListener('input', function () { this.setCustomValidity('') });
+  }
+
+  invalidateSearch() {
+    this.searchTarget.dispatchEvent(new Event('invalid'));
+    this.searchTarget.reportValidity();
   }
 
   initAutocomplete() {
@@ -33,7 +47,9 @@ export default class extends Controller {
         this.regionTarget.value    = this.selectRegion(address) || null;
         this.districtTarget.value  = address.district || null;
         this.cityTarget.value      = address.city || null;
-        this.addressTarget.value   = this.prepareAddress(address) || null;
+        this.addressTarget.value   = street = this.prepareAddress(address) || null;
+
+        address.house_number ? this.showApartmentField() : this.hideApartmentField();
       },
       change: (e, ui) => {
         if (!ui.item) {
@@ -43,7 +59,10 @@ export default class extends Controller {
           this.districtTarget.value  = null;
           this.cityTarget.value      = null;
           this.addressTarget.value   = null;
-          this.searchTarget.value    = null;
+          this.apartmentTarget.value = null;
+
+          this.invalidateSearch();
+          this.hideApartmentField();
         }
       }
     });
@@ -56,5 +75,21 @@ export default class extends Controller {
 
   prepareAddress(address) {
     return [address.road, address.house_number].filter(e => e).join(', ');
+  }
+
+  showApartmentField() {
+    this.apartmentTarget.parentElement.className = '';
+  }
+
+  hideApartmentField() {
+    this.apartmentTarget.parentElement.className = 'hidden';
+  }
+
+  watchApartmentChange() {
+    this.apartmentTarget.addEventListener('change', this.completeAddress);
+  }
+
+  completeAddress = (e) => {
+    this.addressTarget.value = [street, `кв. ${e.target.value}`].filter(e => e).join(', ');
   }
 }
