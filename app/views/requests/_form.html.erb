@@ -76,13 +76,15 @@
         <% end %>
         <%= f.submit "Delete selected", class: 'bg-red-700 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white disabled:opacity-50', style: "background: red; margin-top:10px; cursor:pointer", formaction: destroy_files_request_path %>
       <% else %>
-        <div data-controller="multi-upload">
-          <div class="files">
-            <%= f.label :files %>
-            <%= f.file_field :files, :multiple => true, :data => {:action => "multi-upload#addFile"} %>
+        <div class="mb-6">
+          <%= f.label :files, class: "label" %>
+          <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10" data-dropzone-max-files="5">
+            <%= f.file_field :files, direct_upload: true, data: { target: 'dropzone.input' } %>
+            <div class="dropzone-msg dz-message needsclick text-gray-600">
+              <h3 class="dropzone-msg-title">Натискайте на поле щоб завантажити файли</h3>
+              <span class="dropzone-msg-desc text-sm">10 MB максимальний розмір.</span>
+            </div>
           </div>
-
-          <div data-multi-upload-target="files"></div>
         </div>
       <% end %>
     </div>
