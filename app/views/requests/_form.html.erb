@@ -65,9 +65,34 @@
     </div>
 
     <div>
+      <% if @request.files.attached? %>
+        <% @request.files.each do |file| %>
+          <div class="box_image">
+            <div class="box_content">
+              <%= image_tag file, :width => 500 %>
+              <%= check_box_tag "deleted_img_ids[]", file.id %>
+            </div>
+          </div>
+        <% end %>
+        <%= f.submit "Delete selected", class: 'bg-red-700 inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md shadow-sm text-white disabled:opacity-50', style: "background: red; margin-top:10px; cursor:pointer", formaction: destroy_files_request_path %>
+      <% else %>
+        <div class="mb-6">
+          <%= f.label :files, class: "label" %>
+          <div class="dropzone dropzone-default dz-clickable" data-controller="dropzone" data-dropzone-max-file-size="10" data-dropzone-max-files="5">
+            <%= f.file_field :files, direct_upload: true, data: { target: 'dropzone.input' } %>
+            <div class="dropzone-msg dz-message needsclick text-gray-600">
+              <h3 class="dropzone-msg-title">Натискайте на поле щоб завантажити файли</h3>
+              <span class="dropzone-msg-desc text-sm">10 MB максимальний розмір.</span>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+
+    <div>
       <% if request.persisted? %>
         <div class="float-right">
-          <%= link_to 'Destroy', request, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' } %>
+          <%= link_to 'Destroy', request, method: :delete, class: "text-danger", data: { confirm: 'Are you sure?' }, style: "background: red; color:white; padding:5px 10px; border-radius:5px; cursor:pointer" %>
         </div>
       <% end %>
 

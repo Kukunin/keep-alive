@@ -1,5 +1,7 @@
 @import "font-awesome";
 @import "../stylesheets/pagy";
+@import "../stylesheets/components/forms";
+@import "../stylesheets/components/buttons";
 
 @tailwind base;
 

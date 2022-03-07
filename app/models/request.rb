@@ -3,6 +3,7 @@ class Request < ApplicationRecord
   TYPES = %w[ask provide].freeze
 
   self.inheritance_column = nil
+  has_many_attached :files
 
   belongs_to :user, optional: true
   has_many :comments

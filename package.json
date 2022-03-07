@@ -5,16 +5,19 @@
     "@js-from-routes/client": "^1.0.2",
     "@popperjs/core": "^2.11.2",
     "@rails/actiontext": "^7.0.2-2",
+    "@rails/activestorage": "^7.0.2-2",
     "@tailwindcss/forms": "^0.4.0",
     "@tailwindcss/typography": "^0.5.2",
     "autoprefixer": "^10.4.2",
     "data-confirm-modal": "^1.6.2",
+    "dropzone": "5.9.3",
     "expose-loader": "^3.1.0",
     "font-awesome": "^4.7.0",
     "jquery": "^3.6.0",
     "local-time": "^2.1.0",
     "popper.js": "^1.16.1",
     "postcss": "^8.4.7",
+    "postcss-flexbugs-fixes": "^5.0.2",
     "sass": "^1.49.9",
     "stimulus": "^3.0.1",
     "stimulus-vite-helpers": "^3.0.0",
@@ -26,6 +29,8 @@
     "vite-plugin-stimulus-hmr": "^3.0.0"
   },
   "devDependencies": {
+    "postcss-import": "^14.0.2",
+    "postcss-preset-env": "^7.4.2",
     "vite": "^2.7.7",
     "vite-plugin-ruby": "^3.0.5"
   }
